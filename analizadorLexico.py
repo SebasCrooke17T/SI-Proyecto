@@ -1,8 +1,8 @@
-# Importa el módulo ply.lex para el análisis léxico.
-import ply.lex as lex    #ademas facilita la tarea de analizar y reconocer tokens en el código fuente de un programa
-import ply.yacc as yacc  # Importa el módulo ply.yacc para el análisis sintáctico.
+#  se importa el módulo ply.lex para el análisis léxico.
+import ply.lex as lex    #ademas de que facilita la tarea de analizar y reconocer tokens en el código fuente de un programa
+import ply.yacc as yacc  # se importa el módulo ply.yacc para el análisis sintáctico.
 
-# Definición de tokens
+# Definición de los tokens
 tokens = (
     'NUMERO',
     'SUMA',
@@ -28,7 +28,7 @@ t_MAYORQUE = r'>'  # Token para el mayor que.
 t_MENORQUE = r'<'  # Token para el menor que.
 t_NUMERO = r'\d+'  # Token para números.
 
-# Ignorar espacios y saltos de línea
+# para ignorar espacios y saltos de línea
 t_ignore = ' \n'  # Define que se deben ignorar espacios y saltos de línea.
 
 # Función para manejar errores de tokens inválidos
@@ -69,7 +69,7 @@ def p_expression(p):
 
 def p_expression_number(p):
     'expression : NUMERO'
-    p[0] = int(p[1])  # Esta regla maneja números y asigna el valor numérico a p[0].
+    p[0] = int(p[1])  # Esta regla maneja los números y asigna el valor numérico a p[0].
 
 def p_expression_parentheses(p):
     '''
@@ -117,8 +117,10 @@ def calcular_resultado(expresion):
         print(f"Error de sintaxis: {e}")
         return None
 
-# Ejemplo de uso desde la consola
-expresion_a_evaluar = "2 + 3 * (4 - 1)"
+# para solicitar entrada al usuario
+expresion_a_evaluar = input("Ingrese una expresión: ")
+
+# Calcular resultado y mostrar tokens
 resultado_final = calcular_resultado(expresion_a_evaluar)
 
 if resultado_final is not None:
